@@ -27,8 +27,6 @@ $destination = $shell_app.Namespace((Get-Location).Path)
 $destination.copyHere($zipfile.items())
 
 # Create the web app in IIS
-New-WebApplication -Name netapp -PhysicalPath c:\inetpub\wwwroot\logic-app-website -Site "Default Web Site" -force
+New-WebApplication -Name netapp -PhysicalPath c:\inetpub\wwwroot\cosmos-db-website -Site "Default Web Site" -force
 
 #End
-
-
