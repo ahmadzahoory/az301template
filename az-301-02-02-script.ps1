@@ -9,7 +9,7 @@ mkdir c:\net-core
 Invoke-WebRequest https://download.microsoft.com/download/B/1/D/B1D7D5BF-3920-47AA-94BD-7A6E48822F18/DotNetCore.2.0.0-WindowsHosting.exe -OutFile c:\net-core\DotNetCore.2.0.0-WindowsHosting.exe
 
 # Install .Net Core Windows Hosting
-Start-Process -Wait -FilePath "c:\net-core\DotNetCore.2.0.0-WindowsHosting.exe" -ArgumentList "/S" -PassThru -NoNewWindow
+# Start-Process -Wait -FilePath "c:\net-core\DotNetCore.2.0.0-WindowsHosting.exe" -ArgumentList "/S" -PassThru -NoNewWindow
 
 # Install IIS and Web Management Tools.
 Import-Module ServerManager
