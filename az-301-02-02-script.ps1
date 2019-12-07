@@ -1,0 +1,32 @@
+# Set execution policy
+Set-ExecutionPolicy Unrestricted -Force
+New-Item -ItemType directory -Path 'C:\temp'
+
+# Download website code from Github
+mkdir c:\net-core
+
+# Download .Net Core Windows Hosting
+Invoke-WebRequest https://download.microsoft.com/download/B/1/D/B1D7D5BF-3920-47AA-94BD-7A6E48822F18/DotNetCore.2.0.0-WindowsHosting.exe -OutFile c:\net-core\DotNetCore.2.0.0-WindowsHosting.exe
+
+# Install .Net Core Windows Hosting
+Start-Process -Wait -FilePath "c:\net-core\DotNetCore.2.0.0-WindowsHosting.exe" -ArgumentList "/S" -PassThru -NoNewWindow
+
+# Install IIS and Web Management Tools.
+Import-Module ServerManager
+install-windowsfeature web-server, web-webserver -IncludeAllSubFeature
+install-windowsfeature web-mgmt-tools
+
+# Download the files for our web application.
+Set-Location -Path C:\inetpub\wwwroot
+
+$shell_app = new-object -com shell.application
+(New-Object System.Net.WebClient).DownloadFile("https://bitbucket.org/ahmadzahoory/az301template/downloads/Az-301-02-02-Code.zip", (Get-Location).Path + "\Az-301-02-02-Code.zip")
+
+$zipfile = $shell_app.Namespace((Get-Location).Path + "\Az-301-02-02-Code.zip")
+$destination = $shell_app.Namespace((Get-Location).Path)
+$destination.copyHere($zipfile.items())
+
+# Create the web app in IIS
+New-WebApplication -Name netapp -PhysicalPath c:\inetpub\wwwroot\cosmos-db-website -Site "Default Web Site" -force
+
+#End
