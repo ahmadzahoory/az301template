@@ -13,7 +13,7 @@ Set-Location -Path C:\inetpub\wwwroot
 $shell_app = new-object -com shell.application
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/ahmadzahoory/az301template/master/website-code-01-01.zip", (Get-Location).Path + "\website-code-01-01.zip")
 
-$zipfile = $shell_app.Namespace((Get-Location).Path + "\website-code-01-01.zip")
+$zipfile = $shell_app.Namespace((Get-Location).Path + "\website-code-M01-01.zip")
 $destination = $shell_app.Namespace((Get-Location).Path)
 $destination.copyHere($zipfile.items())
 
