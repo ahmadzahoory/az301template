@@ -35,10 +35,4 @@ Expand-Archive c:\net-core\Az-301-02-02-Dotnet-Hosting.zip -DestinationPath c:\n
 # Install .Net Core Windows Hosting
 Start-Process -Wait -FilePath "c:\net-core\dotnet-hosting-2.1.12-win.exe" -ArgumentList "/S" -PassThru -NoNewWindow
 
-# Download SQL Server Management Studio (SSMS)
-Invoke-WebRequest https://aka.ms/ssmsfullsetup -OutFile c:\net-core\ssms-setup-enu.exe
-
-# Install SQL Server Management Studio (SSMS)
-Start-Process -Wait -FilePath "c:\net-core\ssms-setup-enu.exe" -ArgumentList "/S" -PassThru -NoNewWindow
-
 #End
